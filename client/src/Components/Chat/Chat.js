@@ -14,8 +14,7 @@ const Chat = () => {
   const [room, setRoom] = useState("");
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
-  const ENDPOINT = 'http://localhost:5000';
-  // const ENDPOINT = 'https://mernchatappbackend-8ngn.onrender.com/';
+  const ENDPOINT = process.env.REACT_APP_ENDPOINT;
 
   const location = useLocation();
   useEffect(() => {
