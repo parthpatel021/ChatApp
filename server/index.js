@@ -5,18 +5,21 @@ const { addUser, rmvUser, getUser, getUserInRoom } = require('./users.js');
 const cors = require('cors');
 const { Server } = require('socket.io');
 const router = require('./router');
+require('dotenv').config();
+
 const PORT = process.env.PORT || 5000;
+const CLIENTURL = process.env.CLIENTURL;
 
 app.use(cors());
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: "http://localhost:3000",
+        origin: CLIENTURL,
         methods: ["GET", "POST"],
     },
 });
 
-
+console.log(CLIENTURL);
 
 io.on('connection', (socket) => {
 
