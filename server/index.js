@@ -3,7 +3,7 @@ const app = express();
 const http = require('http');
 const { addUser, rmvUser, getUser, getUserInRoom } = require('./users.js');
 const cors = require('cors');
-const { Server } = require('socket.io');
+// const { Server } = require('socket.io');
 const router = require('./router');
 require('dotenv').config();
 
@@ -12,12 +12,18 @@ const CLIENTURL = process.env.CLIENTURL;
 
 app.use(cors());
 const server = http.createServer(app);
-const io = new Server(server, {
+// const io = new Server(server, {
+//     cors: {
+//         origin: CLIENTURL,
+//         methods: ["GET", "POST"],
+//     },
+// });
+const io = require("socket.io")(httpServer, {
     cors: {
-        origin: CLIENTURL,
-        methods: ["GET", "POST"],
-    },
-});
+      origin: CLIENTURL,
+      methods: ["GET", "POST"]
+    }
+  });
 
 console.log(CLIENTURL);
 
