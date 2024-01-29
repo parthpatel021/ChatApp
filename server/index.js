@@ -18,7 +18,7 @@ const server = http.createServer(app);
 //         methods: ["GET", "POST"],
 //     },
 // });
-const io = require("socket.io")(httpServer, {
+const io = require("socket.io")(server, {
     cors: {
       origin: CLIENTURL,
       methods: ["GET", "POST"]
